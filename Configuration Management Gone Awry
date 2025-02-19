@@ -17,6 +17,18 @@ ADDS Server -- Domain Controller
       b. In the Network and Sharing Center, Click on "Change Adapter Settings" on the left-hand side
       c. In the Network Settings window that comes up, right-click on the Adapter and go to "Properties"
       d. In the Properties window, double-click "Internet Protocol Version 4 (TCP/IPv4)" to bring up the IPv4 address configuration
-      e. Examine and compare the addresses - 172.16.10.66 is the current address - according to the chart it should be 172.16.30.55. The subnet is also wrong. It is currently 255.255.255.255 and should be 255.255.255.0.
-4. We need to fix it! To fix it:
-      a. In the properties window you are currently in, change the address to 172.16.30.55 and the subnet mask to 255.255.255.0 and 
+      e. Examine and compare the addresses - 172.16.10.66 is the current address - according to the chart it should be 172.16.30.55. The subnet is also wrong. It is currently 255.255.255.255 and should be 255.255.255.0. Lastly,
+         the default gateway is correct. So no changes needed. 
+4. Next, we need to fix it! To fix it:
+      a. In the properties window you are currently in, change the ip address to 172.16.30.55 and the subnet mask to 255.255.255.0. Then choose ok, ok on the next window, then close the two other open windows
+      b. Wait a few moments - it should show as green
+
+Fileshare Server -- FileShare
+1. Deploy the FileShare server
+2. Log in using the following credentials: playerone/password123 (you will overwrite the login prompt - and the password won't show you typing - don't panic! That's normal!)
+3. Since it is not connecting to the Network, we will need to examine the networking settings
+      a. Run ifconfig to get the current configuration
+      b. You have two adapters. The first one, ens32 is your network adapter. The second one, lo, is your loopback
+      c. 172.16.10.100 is the address for ens32 - it should be 172.16.30.100 (so close!). The subnet mask is 255.0.0.0 and should be 255.255.255.0. It is missing a default gateway. Everything else looks good.
+4. Now, let's fix it!
+      a. run the following command to set the address: sudo ifconfig ens32 172.16.30.100 netmask 255.255.255.0
