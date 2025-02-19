@@ -1,3 +1,5 @@
+\\\\\\\\ INCOMPLETE \\\\\\\\\\\\\\
+
 Nice Challenge (XP Cyber) Walkthrough
 Envinronment: Pretty Safe Electronics (Protect & Defend Focused)
 Challenge Name: Configuration Management Gone Awry
@@ -31,4 +33,7 @@ Fileshare Server -- FileShare
       b. You have two adapters. The first one, ens32 is your network adapter. The second one, lo, is your loopback
       c. 172.16.10.100 is the address for ens32 - it should be 172.16.30.100 (so close!). The subnet mask is 255.0.0.0 and should be 255.255.255.0. It is missing a default gateway. Everything else looks good.
 4. Now, let's fix it!
-      a. run the following command to set the address: sudo ifconfig ens32 172.16.30.100 netmask 255.255.255.0
+      a. Run the following command to set the address: sudo ifconfig ens32 172.16.30.100 netmask 255.255.255.0
+      b. The command breaks down as follows: sudo (gives admin permissions), ifconfig (interface configuration), ens32 (adapter), 172.16.30.100 (ip address), and netmask 255.255.255.0 (sets the subnet mask)
+      c. Once the command has run, double-check that it worked by running ifconfig - if not, do it again, if it did, move on to setting the default gateway
+      d. Next, set the default gateway using the following command: 
