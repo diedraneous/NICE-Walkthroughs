@@ -1,4 +1,4 @@
-\\\\\\\\ INCOMPLETE \\\\\\\\\\\\\\
+\\\\\\\\ COMPLETE AND TESTED \\\\\\\\\\\\\\
 
 Nice Challenge (XP Cyber) Walkthrough
 Envinronment: Pretty Safe Electronics (Protect & Defend Focused)
@@ -55,4 +55,27 @@ Your task is to fix those settings so everyone can connect properly to the netwo
       a. To add the address, do the following command: sudo ip addr add 172.16.10.100 dev ens32
       b. That breaks down to: sudo (admin permissions) ip addr add (command to add an ip) 172.16.10.100 (the address) dev ens32 (specifies the interface to add it to)
       c. Next, we will add the gateway: sudo ip route add default via 172.16.10.250
+      d. This breaks down to sudo (admin permissions) ip route add (adds a route for routing/switching), default (default gateway) via (specifies the route) 172.16.10.250 (the address of the route - in this case, the default gateway)
+      e. This one takes longer, so wait a few moments for it to go green
+
+
+//// Workstation Machine -- Workstation ////
+1. Deploy the Workstation machine
+2. Log in using the following credentials: workstation/playerone -- password123
+3. Notice that the user name is Workstation\playerone - that is because we cannot log in using the domain due to lack of connection. We need to log in locally.
+4. Since it is not connecting to the Network, we will need to examine the networking settings
+      a. Right-click the ethernet icon in the system tray and choose "Open Internet and Network Settings"
+      b. Scroll down and Click on "Change Adapter Options"
+      c. In the Network Settings window that comes up, right-click on the Adapter and go to "Properties"
+      d. In the Properties window, double-click "Internet Protocol Version 4 (TCP/IPv4)" to bring up the IPv4 address configuration
+      e. Examine and compare the addresses - 172.16.10.5 is the current address - according to the chart it should be 172.16.20.60. The subnet is also wrong. It is currently 255.255.255.255 and should be 255.255.255.0. Lastly,
+         the default gateway is correct. So no changes needed. The DNS server is also correct.
+4. Next, we need to fix it! To fix it:
+      a. In the properties window you are currently in, change the ip address to 172.16.20.60 and the subnet mask to 255.255.255.0. Then choose ok, ok on the next window, then close the two other open windows
+      b. Wait a few moments - it should show as green
+
+
+
+//// //// //// //// //// CONGRATS! YOU DID IT!!! 🎉 //// //// //// ////
+
 
