@@ -9,9 +9,14 @@ An automatic configuration management tool was deployed on the network by the MS
 Your task is to fix those settings so everyone can connect properly to the network.
 
 
-ADDS Server
+ADDS Server -- Domain Controller
 1. Deploy the ADDS Server
 2. Log in using the following credentials: playerone/password123
 3. Since it is not connecting to the Network, we will need to examine the networking settings
-      a. Right-click the ethernet icon in the system tray and choose "Network and Sharing Center"
-      b. 
+      a. Right-click the ethernet icon in the system tray and choose "Open Network and Sharing Center"
+      b. In the Network and Sharing Center, Click on "Change Adapter Settings" on the left-hand side
+      c. In the Network Settings window that comes up, right-click on the Adapter and go to "Properties"
+      d. In the Properties window, double-click "Internet Protocol Version 4 (TCP/IPv4)" to bring up the IPv4 address configuration
+      e. Examine and compare the addresses - 172.16.10.66 is the current address - according to the chart it should be 172.16.30.55. The subnet is also wrong. It is currently 255.255.255.255 and should be 255.255.255.0.
+4. We need to fix it! To fix it:
+      a. In the properties window you are currently in, change the address to 172.16.30.55 and the subnet mask to 255.255.255.0 and 
