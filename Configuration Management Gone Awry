@@ -1,1 +1,17 @@
+Nice Challenge (XP Cyber) Walkthrough
+Envinronment: Pretty Safe Electronics (Protect & Defend Focused)
+Challenge Name: Configuration Management Gone Awry
+Type: Technical
 
+
+Scenario: 
+An automatic configuration management tool was deployed on the network by the MSP (Managed Service Provider) and seems to have incorrectly set some of the network settings on some machines. 
+Your task is to fix those settings so everyone can connect properly to the network.
+
+
+ADDS Server
+1. Deploy the ADDS Server
+2. Log in using the following credentials: playerone/password123
+3. Since it is not connecting to the Network, we will need to examine the networking settings
+      a. Right-click the ethernet icon in the system tray and choose "Network and Sharing Center"
+      b. 
