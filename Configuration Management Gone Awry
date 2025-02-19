@@ -54,5 +54,5 @@ Your task is to fix those settings so everyone can connect properly to the netwo
 4. Let's fix it!
       a. To add the address, do the following command: sudo ip addr add 172.16.10.100 dev ens32
       b. That breaks down to: sudo (admin permissions) ip addr add (command to add an ip) 172.16.10.100 (the address) dev ens32 (specifies the interface to add it to)
-      c. Next, we will add the gateway: 
+      c. Next, we will add the gateway: sudo ip route add default via 172.16.10.250
 
