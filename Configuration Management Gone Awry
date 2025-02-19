@@ -6,12 +6,12 @@ Challenge Name: Configuration Management Gone Awry
 Type: Technical
 
 
-Scenario: 
+//// Scenario: ////
 An automatic configuration management tool was deployed on the network by the MSP (Managed Service Provider) and seems to have incorrectly set some of the network settings on some machines. 
 Your task is to fix those settings so everyone can connect properly to the network.
 
 
-ADDS Server -- Domain Controller
+//// ADDS Server -- Domain Controller ////
 1. Deploy the ADDS Server
 2. Log in using the following credentials: playerone/password123
 3. Since it is not connecting to the Network, we will need to examine the networking settings
@@ -25,7 +25,8 @@ ADDS Server -- Domain Controller
       a. In the properties window you are currently in, change the ip address to 172.16.30.55 and the subnet mask to 255.255.255.0. Then choose ok, ok on the next window, then close the two other open windows
       b. Wait a few moments - it should show as green
 
-Fileshare Server -- FileShare
+
+//// Fileshare Server -- FileShare ////
 1. Deploy the FileShare server
 2. Log in using the following credentials: playerone/password123 (you will overwrite the login prompt - and the password won't show you typing - don't panic! That's normal!)
 3. Since it is not connecting to the Network, we will need to examine the networking settings
@@ -36,4 +37,22 @@ Fileshare Server -- FileShare
       a. Run the following command to set the address: sudo ifconfig ens32 172.16.30.100 netmask 255.255.255.0
       b. The command breaks down as follows: sudo (gives admin permissions), ifconfig (interface configuration), ens32 (adapter), 172.16.30.100 (ip address), and netmask 255.255.255.0 (sets the subnet mask)
       c. Once the command has run, double-check that it worked by running ifconfig - if not, do it again, if it did, move on to setting the default gateway
-      d. Next, set the default gateway using the following command: 
+      d. Next, set the default gateway using the following command: sudo route add default gw 172.16.30.250 ens32
+      e. That breaks down to: sudo (admin permissions), route add (adds a route for routing/switching), default gw (specifies we are adding a default gateway route), 172.16.30.250 (the gateway address) ens32 (specifies which interface it will be added to) 
+      f. Wait a few moments - it should show as green
+
+
+//// Prod-Joomla Server -- Prod-Joomla ////
+1. Deploy the Prod-Joomla server
+2. Since this is Joomla, the commands are going to be a bit different
+3. Log in using the following credentials: playerone/password123 (the password won't show you typing - don't panic! That's normal!)
+3. Since it is not connecting to the Network, we will need to examine the networking settings
+      a. Run ip -a to view the current configuration (the Joomla server uses ip instead of ifconfig)
+      b. Notice that the output is basically the same as ifconfig
+      c. As with the fileshare - the network adapter is ens32 and the loopback is lo
+      d. The information in here looks to be correct - however, we will manually add the information to ensure it is good
+4. Let's fix it!
+      a. To add the address, do the following command: sudo ip addr add 172.16.10.100 dev ens32
+      b. That breaks down to: sudo (admin permissions) ip addr add (command to add an ip) 172.16.10.100 (the address) dev ens32 (specifies the interface to add it to)
+      c. Next, we will add the gateway: 
+
